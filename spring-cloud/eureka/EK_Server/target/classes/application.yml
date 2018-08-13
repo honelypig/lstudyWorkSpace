@@ -1,0 +1,9 @@
+server:
+  port: 8761
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+  server:
+    enable-self-preservation: false   #服务器的自我保护，false为关闭
+    eviction-interval-timer-in-ms: 5000  #当没有其中一个服务提供者没有心跳测试，或者任何请求，并经过这个时间（默认60秒）后，会清理列表

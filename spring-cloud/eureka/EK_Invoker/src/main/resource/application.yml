@@ -1,0 +1,10 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: EK_Invoker
+eureka:
+  client:
+    registry-fetch-interval-seconds: 30  #设置每30秒去抓取一次Eureka服务liebiao 
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
