@@ -1,0 +1,39 @@
+1、MR
+2、yarn作业提交
+3、split、法则 min，max，block三个去中间值
+4、压缩
+5、anturn插件（用在Pom.xml文件中，是用来快速打包jar到指定文件夹）
+序列文件、同步点、map文件
+6、自定义分区，数据倾斜，combiner类
+7、多输入
+8、计数器，跟踪
+9、全排序（采样器）
+    a、一个reducer
+    b、自定义分区
+    c、采样
+10、二次排序(串行化、combokey、comparetor)
+11、链式
+12、输出输入到数据库
+13、机架感知、ha
+14、mysql
+15、Map链接
+hadoop源码的话，要引入hadoop-src的包
+
+16、二次排序的应用。
+       有两张表，customers客户表，orders订单表
+       customers： id,name,age
+       orders: id,orderno,price,cid
+      编写一个MR，实现customers与orders的链接。
+      使用二次排序实现。通过读取customer与order表的数据，生成combkey，然后经过key对比，分组对比器后进入reducer，在reducer端通过比较combkey，写出链接。
+      重点在于combkey的构造，两个对比器的设置。
+          过程：
+          1、设计combkey
+                type，cid，oid，customerInfo，orderInfo
+                type：0 customer，1 order
+          2、编写mapper。构建combkey数据
+          3、编写自定义分区类。同个cid的key进入同个分区
+          4、编写combkeyCompartor。
+          5、编写分组对比器。
+          6、编写reducer。
+          7、编写job。
+

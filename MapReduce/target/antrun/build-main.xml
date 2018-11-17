@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="maven-antrun-" default="main"  >
+<target name="main">
+  <echo>---------将生成的jar复制到指定文件----------</echo>
+  <delete file="D:\MyShare\MapReduceDemo.jar"></delete>
+  <copy file="target/MapReduce-1.0-SNAPSHOT.jar" toFile="D:\MyShare\MapReduceDemo.jar"></copy>
+</target>
+</project>

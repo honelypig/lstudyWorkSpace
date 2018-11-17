@@ -1,0 +1,7 @@
+一个作业的过程：
+
+inputformat->reader->map函数->partioner->combiner  |          |
+inputformat->reader->map函数->partioner->combiner  | suffle   | GroupComparator,KeyComparator
+inputformat->reader->map函数->partioner->combiner  |======>   | GroupComparator,KeyComparator  ==》 reducer  =》out
+...
+inputformat->reader->map函数->partioner->combiner  |          | GroupComparator,KeyComparator

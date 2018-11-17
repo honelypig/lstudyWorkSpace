@@ -1,0 +1,30 @@
+背景：作业文件有三个：
+words.txt:
+        falungong falungong falungong
+        falungong falungong falungong
+        zhangdada zhangdada zhangdada
+        zhangdada zhangdada zhangdada
+        zhangsan zhangsan zhangsan
+        java java java java java java
+        how are you
+        im fine thank you
+        who are you
+        are are are are
+words1.txt：
+        hahah
+        adsa
+        yingyu
+        zhangsansan
+        wordcount wordcount wordcount wordcount
+        wordcount wordcount wordcount wordcount
+        wordcount wordcount wordcount wordcount
+words2.txt：
+        falungong
+        zhangdada
+        zhangsan
+        java
+
+提交作业后控制台输出
+18/11/14 17:33:28 INFO input.FileInputFormat: Total input files to process : 3
+18/11/14 17:33:28 INFO mapreduce.JobSubmitter: number of splits:3
+18/11/14 17:33:29 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_local503941080_0001
