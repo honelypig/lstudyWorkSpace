@@ -1,0 +1,3 @@
+[ERROR] [2018-11-02 16:40:07][com.geccocrawler.gecco.spider.Spider]cant't match url : http://www.cnblogs.com/boychen/p/7226831.html
+[ERROR] [2018-11-02 16:41:14][com.geccocrawler.gecco.spider.Spider]cant't match url : http://www.cnblogs.com/boychen/p/7226831.html
+[ERROR] [2018-11-02 16:43:09][com.geccocrawler.gecco.spider.Spider]http://www.cnblogs.com/boychen/p/7226831.html DOWNLOAD ERROR :java.net.SocketTimeoutException: Read timed out
