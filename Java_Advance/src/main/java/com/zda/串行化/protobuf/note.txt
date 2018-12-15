@@ -1,0 +1,17 @@
+1.设计实体
+person{
+name，
+id，
+age，
+Email，
+Phone（s）}
+2.描述实体，并生成proto文件，如addressbook.proto
+3.编译proto文件
+    在protoc.exe 所在的文件夹下，打开cmd
+                            文件输出地址   描述文件
+    cmd> protoc --java_out=$DST_DIR addressbook.proto
+    如 protoc --java_out=. addressbook.proto
+4.获取源码
+5.导入源码.
+    在输出文件的地址将生成的源码拷贝到项目中，注意要拷贝完整的包
+6.使用

@@ -1,0 +1,27 @@
+kryo
+kryo是个高效的java序列化/反序列化库，
+目前Twitter、yahoo、Apache、strom等等在使用该技术，
+比如Apache的spark、hive等大数据领域用的较多。
+
+
+    当Kryo写出一个对象的实例时，首先可能需要写出一些标识对象类的东西。默认情况下，写入完整类名，然后写入该对象的字节。后
+续出现的同一类对象图的对象用变长的int来写（using a variable length int）。写类的名字有点低效，所以类可以事先注册：
+kryo.register(SomeClass.class);这样的话，SomeClass 注册到了 Kryo，它将该类与一个 int 型的 ID 相关联。当 Kryo 写出 SomeClass
+的一个实例时，它会写出这个 int ID。这比写出类名更有效。在反序列化期间，注册的类必须具有序列化期间相同的 ID 。
+还有一种情况是kryo每次写入类的完整信息，而不是通过int类型的ID号去代替。两种情况如何取舍呢？写id的情况，效率会高一些，但是
+缺陷很明显：所有系列化涉及到的类都需要代码里手工kryo.register(),否则报告unregistered class ID；另外，kryo不能保证"每次jvm
+重启之后，或者在多台jvm机器之间，同一个类注册到kryo的class ID会相同"，所以这就导致该模式应用于集群会存在严重问题，所以用id
+代替类信息的模式不建议使用，而且，默认该功能也是关闭的，除非你在代码中显性的调用了以下代码：
+    kryo.register(SomeClass.class);
+或者：
+    Kryo.setRegistrationRequired(true)；
+所以遇到Encountered unregistered class ID之类的问题，首先要检查该功能是否被不经意的开启了。如果确保未开启该功能，再考虑以
+下情况：就是对象太大，导致系列化结果不完整，因为output对象默认的缓存字节数并不大，实际对象超出大小的时候，系列化的时候并不
+会报告错误，但是系列化结果已经不完整，从而导致反系列化的时候会失败，报告的错误一般也是Encountered unregistered class ID。该
+问题的解决：
+    一般系列化的时候，代码是这么写的：
+        ByteArrayOutputStream baos=new ByteArrayOutputStream();
+        Output output = new Output(baos);
+    这种情况下，缓存字节数大于4096的话，就会发生问题。必须在建立Output对象的时候，指定更大的bufferSize，例如：
+        ByteArrayOutputStream baos=new ByteArrayOutputStream();
+        Output output = new Output(baos,100000);

@@ -1,0 +1,91 @@
+java中IO、NIO
+    Java NIO和IO之间第一个最大的区别是，IO是面向流的，NIO是面向缓冲区的。
+    Java IO面向流意味着每次从流中读一个或多个字节，直至读取所有字节，它们没有被缓存在任何地方。
+    此外，它不能前后移动流中的数据。如果需要前后移动从流中读取的数据，需要先将它缓存到一个缓冲区。
+    Java NIO的缓冲导向方法略有不同。数据读取到一个它稍后处理的缓冲区，需要时可在缓冲区中前后移动。
+    这就增加了处理过程中的灵活性。但是，还需要检查是否该缓冲区中包含所有您需要处理的数据。
+    而且，需确保当更多的数据读入缓冲区时，不要覆盖缓冲区里尚未处理的数据。
+IO流包括字节流和字符流：
+    字节流：对应抽象类为InputStream（输入流）和 OutputStream（输出流）。 FileInputStream、FileOutputStream
+    字符流：对应抽象类为Reader（输入流）和Writer（输出流）。BufferedReader、InputStreamReader、 StringReader
+
+字符流和字节流
+字符流的由来： 因为数据编码的不同，而有了对字符进行高效操作的流对象。本质其实就是基于字节流读取时，去查了指定的码表。
+ 字节流和字符流的区别：
+    读写单位不同：字节流以字节（8bit）为单位，字符流以字符为单位，根据码表映射字符，一次可能读多个字节。
+    处理对象不同：字节流能处理所有类型的数据（如图片、avi等），而字符流只能处理字符类型的数据。
+    字节流：一次读入或读出是8位二进制。
+    字符流：一次读入或读出是16位二进制。
+    设备上的数据无论是图片或者视频，文字，它们都以二进制存储的。二进制的最终都是以一个8位为数据单元进行体现，所以计算机中的最小数据单元就是字节。意味着，字节流可以处理设备上的所有数据，所以字节流一样可以处理字符数据。
+    结论：只要是处理纯文本数据，就优先考虑使用字符流。 除此之外都使用字节流。
+
+ 字节流（inputstream、outputstream）
+    ·inputstream
+        |-FileInputStream
+        |-FilterInputStream
+               |-BufferedInputStream
+               |-DataInputStream
+               |-PushbakInputStream
+        |-ObjectInputStream
+        |-PipedInputStream
+        |-SequenceInputStream
+        |-StringBufferInputStream
+        |-ByteArrayInputStream
+    ·OutputStream
+        |-FileOutputStream
+        |-FilterOutputStream
+               |-BufferedOutputStream
+               |-DataOutputStream
+               |-PrintStream
+        |-ObjectOutputStream
+        |-PipedOutputStream
+        |-ByteArrayOutputStream
+ 字符流（reader、writer）
+    ·Reader
+        |-BufferedReader
+        |-InputStreamReader
+                |-FileReader
+        |-StringReader
+        |-PipedReader
+        |-ByteArrayReader
+        |-FilterReader
+                |-PushbakReader
+    ·Writer
+        |-BufferedWriter
+        |-InputStreamWriter
+                |-FileWriter
+        |-PrinterWriter
+        |-StringWriter
+        |-Piped
+        |-ChartArrayWriter
+        |-FilterWriter
+
+
+ 节点流：直接与数据源相连，读入或读出。
+ 直接使用节点流，读写不方便，为了更快的读写文件，才有了处理流。
+
+ 常用的节点流
+ 父　类 ：InputStream 、OutputStream、 Reader、 Writer
+ 文　件 ：FileInputStream 、 FileOutputStrean 、FileReader 、FileWriter 文件进行处理的节点流
+ 数　组 ：ByteArrayInputStream、 ByteArrayOutputStream、 CharArrayReader 、CharArrayWriter 对数组进行处理的节点流（对应的不再是文件，而是内存中的一个数组）
+ 字符串 ：StringReader、 StringWriter 对字符串进行处理的节点流
+ 管　道 ：PipedInputStream 、PipedOutputStream 、PipedReader 、PipedWriter 对管道进行处理的节点流
+ 处理流
+ 处理流和节点流一块使用，在节点流的基础上，再套接一层，套接在节点流上的就是处理流。如BufferedReader.处理流的构造方法总是要带一个其他的流对象做参数。一个流对象经过其他流的多次包装，称为流的链接。
+
+
+ 常用的处理流
+ 缓冲流：BufferedInputStrean 、BufferedOutputStream、 BufferedReader、 BufferedWriter 增加缓冲功能，避免频繁读写硬盘。
+ 转换流：InputStreamReader 、OutputStreamWriter实现字节流和字符流之间的转换。
+ 数据流： DataInputStream 、DataOutputStream 等-提供将基础数据类型写入到文件中，或者读取出来。
+ 转换流
+         InputStreamReader 、OutputStreamWriter 要InputStream或OutputStream作为参数，实现从字节流到字符流的转换。
+         InputStreamReader:字节到字符的桥梁
+         OutputStreamWriter:字符到字节的桥梁
+
+ 构造函数
+
+ InputStreamReader(InputStream);        //通过构造函数初始化，使用的是本系统默认的编码表GBK。
+ InputStreamWriter(InputStream,String charSet);   //通过该构造函数初始化，可以指定编码表。
+ OutputStreamWriter(OutputStream);      //通过该构造函数初始化，使用的是本系统默认的编码表GBK。
+ OutputStreamwriter(OutputStream,String charSet);   //通过该构造函数初始化，可以指定编码表。

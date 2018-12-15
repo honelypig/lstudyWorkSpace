@@ -1,0 +1,15 @@
+java中异常的分类及结构
+    Java中的异常类，包括内置的异常类以及自定义的异常类，都直接或者间接地继承至java.lang.Throwable类。
+    在java.lang包中，Throwable类有两个直接子类：Error类和Exception类，
+    Error类及其子类描述了java运行时系统的内部错误和资源耗尽错误。出现这样的错误的，除了通知用户，并接尽力使程序安全地终止之外，没有更好的办法。
+    Exception类的层次结构又分为两个分支：一个分支由RuntimeException派生，另外一个分支包含除RuntimeException类之外的异常类。
+运行时异常、非运行时异常
+运行时异常：RuntimeException类及其子类异常，如NullPointerException、IndexOutOfBoundsException、classCastException等，这些异常是不检查异常，程序中可以选择捕获处理，也可以不处理。这些异常一般是由程序逻辑错误引起的，程序应该从逻辑角度尽可能避免这类异常的发生。
+非运行时异常：RuntimeException以外的异常，类型上都属于Exception类及其子类。从程序语法角度讲是必须进行处理的异常，不处理程序不能编译通过。如IOException、SQLException等以及用户自定义的Exception异常。
+
+try catch finally的使用
+1. finally 里 始终会被执行到， System.exit(0); 除这种被执行外。
+2. 即使try中有return ，也是先执行 return 后面的语句完了之后，不立马return，而是去执行finally中的语句。
+3. 当try中与finally里，同时出现return , 则只会返回 finally 中的return 结果。
+4. finally中的值不能影响try中 即将返回的结果值。
+注意： 若finally中没有return在try或catch中有return，那么在执行return跟着语句之后，会把语句的结果新开辟一内存空间，直接把结果的存放此内存空间中。所以，finally中的值不能影响try或catch中即将return的结果。

@@ -1,0 +1,7 @@
+设计模式
+Java源码中有哪些设计模式
+http://www.iteye.com/news/18725
+常见的设计模式类图
+http://blog.sina.com.cn/s/blog_8cc6ff5c0101d4cp.html
+常见的设计模式的示例：
+http://www.jb51.net/article/27973.htm

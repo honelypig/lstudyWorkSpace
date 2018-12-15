@@ -1,0 +1,5 @@
+框架相关
+对框架的熟悉:SSH （面试过程中问的很少，像jsp、servlet基本不问）
+Spring框架组成、AOP、IOC 、用到的设计模式
+Hibernate运行机制、缓存的使用、最好看看源码
+熟悉和了解JavaScript和jQuery

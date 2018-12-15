@@ -1,0 +1,24 @@
+To use Avro, you need to follow the given workflow
+ Step 1 − Create schemas. Here you need to design Avro schema according
+to your data.  //编写schemas
+ Step 2 − Read the schemas into your program. It is done in two ways −
+     By Generating a Class Corresponding to Schema − Compile the
+    schema using Avro. This generates a class file corresponding to the schema
+        使用 avro-tools-1.8.0.jar 编译文件
+     By Using Parsers Library − You can directly read the schema using
+    parsers library.//直接操作schema文件
+ Step 3 − Serialize the data using the serialization API provided for Avro,
+which is found in the package org.apache.avro.specific.//串行化，
+ Step 4 – De-serialize the data using deserialization API provided for Avro,
+which is found in the package org.apache.avro.specific.//返串行化
+
+
+1.编写schemas文件 如 emp.avsc
+2.使用 avro-tools-1.8.0.jar 编译emp.avsc 文件（也可以不编译文件）
+    cmd> java -jar avro-tools-1.8.0.jar compile schema emp.avsc  .
+                                                 schemas文件  生成位置
+    生成的文件如Tutorialspoint(com.example.avro.Turorialspoint)
+3.使用串行化
+    a.对已编译的文件
+    b.对未编译的文件
+4.返串行化

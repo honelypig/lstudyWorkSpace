@@ -1,0 +1,20 @@
+package depts;
+option java_package = "com.example.depts";
+option java_outer_classname ="DeptsProtos";
+message Deparment{
+    required  int32 id=1;
+    required string name=2;
+    enum PersonType{
+        LEADER=1;
+        ORDINARY=2;
+    }
+    message  Person{
+        required string name=1;
+        required int32 id=2;
+        optional PersonType type=3 [default=ORDINARY];
+    }
+   repeated Person person=3;
+}
+message Organise{
+    repeated Deparment depart=1;
+}

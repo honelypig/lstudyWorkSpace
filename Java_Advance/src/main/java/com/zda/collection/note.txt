@@ -1,0 +1,9 @@
+HashMap的存储机制（很重要，必看）
+Set、map区别
+Set、list区别
+Arraylist、LinkedList区别
+String、Stringbufer、StringBuilder区别
+HashSet、LinkedHashSet区别
+HashMap、TreeMap、LinkedHashMap
+熟悉Java集合类的框架图
+HashMap、ArrayList、StringBuffer、String等源码的熟悉
